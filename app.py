@@ -2,10 +2,12 @@
 
 import pickle
 import streamlit as st
+from sklearn.ensemble import RandomForestClassifier
 
 # loading the trained model
 pickle_in = open('rf.pkl', 'rb')
 classifier = pickle.load(pickle_in)
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
 
 @st.cache()
 
