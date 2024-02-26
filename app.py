@@ -7,12 +7,12 @@ from sklearn.ensemble import RandomForestClassifier
 # loading the trained model
 pickle_in = open('rf.pkl', 'rb')
 classifier = pickle.load(pickle_in)
-rf = RandomForestClassifier(n_estimators=100, random_state=42)
+
 
 @st.cache()
 
 def prediction(temperature,bpm):
-    prediction=rf.predict(temperature,bpm)
+    prediction=classifier.predict(temperature,bpm)
     return prediction
 
 
@@ -35,5 +35,5 @@ def main():
         result = prediction(temperature, bpm)
         st.success('Your emotion is {}'.format(result))
 
-
-main()
+if __name__ == '__main__':
+    main()
