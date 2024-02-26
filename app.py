@@ -12,7 +12,7 @@ classifier = pickle.load(pickle_in)
 @st.cache()
 
 def prediction(temperature,bpm):
-    input_data = [[temperature, bpm]]
+    input_data = [[bpm, temperature]]
     prediction=classifier.predict(input_data)
     return prediction
 
