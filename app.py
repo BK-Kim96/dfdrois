@@ -11,7 +11,7 @@ classifier = pickle.load(pickle_in)
 @st.cache()
 
 def prediction(temperature,bpm):
-    prediction=rf.predict(temperature,bpm)
+    prediction=classifier.predict(temperature,bpm)
     return prediction
 
 
