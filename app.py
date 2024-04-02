@@ -33,5 +33,5 @@ def main():
         result = prediction(temperature, bpm)
         st.success('Your emotion is {}'.format(result))
 
-    if __name__ == '__main__':
-        main()
+if __name__ == '__main__':
+    main()
