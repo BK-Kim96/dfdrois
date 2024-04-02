@@ -10,7 +10,7 @@ classifier = pickle.load(pickle_in)
 
 @st.cache()
 
-def prediction(temperature,bpm):
+def predict(temperature,bpm):
     prediction=classifier.predict(temperature,bpm)
     return prediction
 
@@ -31,7 +31,7 @@ def main():
     result=""
 
     if st.button("Predict"):
-        result = prediction(temperature, bpm)
+        result = predict(temperature, bpm)
         st.success('Your emotion is {}'.format(result))
 
 if __name__ == '__main__':
