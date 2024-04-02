@@ -3,6 +3,8 @@
 import pickle
 import streamlit as st
 from sklearn.ensemble import RandomForestClassifier
+from flask import Flask
+from flask_restful import Resource, Api, reqparse
 
 # loading the trained model
 pickle_in = open('rf.pkl', 'rb')
@@ -19,9 +21,29 @@ def prediction(temperature,bpm):
 
 def main():
     # front end elements of the web page
+    app = Flask(__name__)
+    api = Api(app)
+    
+    class RegistUser(Resource):
+        def post(self):
+           
+            parser = reqparse.RequestParser()
+            parser.add_argument('TEMP', type=float)
+            parser.add_argument('HR', type=float)
+            parser.add_argument('RMSSD', type=float)
+            args = parser.parse_args()
+            temp = args['TEMP']
+            hr = args['HR']
+            rmssd = args['RMSSD']
+            emotion = prediction(temp,hr)
+            return {'predict emotion': emotion}
+    
+    api.add_resource(RegistUser, '/emotion')
+
+
     html_temp = """ 
     <div style ="background-color:yellow;padding:13px"> 
-    <h1 style ="color:black;text-align:center;">스마트 워치를 사용한 감정추론</h1> 
+    <h1 style ="color:black;text-align:center;">Streamlit Loan Prediction ML App</h1> 
     </div> 
     """
 
