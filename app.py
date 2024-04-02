@@ -18,7 +18,7 @@ def main():
     # front end elements of the web page
     html_temp = """ 
     <div style ="background-color:yellow;padding:13px"> 
-    <h1 style ="color:black;text-align:center;">Streamlit Loan Prediction ML App</h1> 
+    <h1 style ="color:black;text-align:center;">스마트 워치를 사용한 감정추론</h1> 
     </div> 
     """
 
